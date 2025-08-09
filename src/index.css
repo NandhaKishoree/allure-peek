@@ -8,33 +8,48 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 250 20% 10%;
+    --foreground: 330 50% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 250 25% 12%;
+    --card-foreground: 330 50% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 250 25% 12%;
+    --popover-foreground: 330 50% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 320 100% 65%;
+    --primary-foreground: 250 25% 12%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 280 80% 50%;
+    --secondary-foreground: 330 50% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 250 15% 20%;
+    --muted-foreground: 320 30% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 45 100% 70%;
+    --accent-foreground: 250 25% 12%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 250 20% 25%;
+    --input: 250 20% 18%;
+    --ring: 320 100% 65%;
+
+    /* Custom romantic gradients and effects */
+    --gradient-romantic: linear-gradient(135deg, hsl(320, 100%, 65%) 0%, hsl(280, 80%, 50%) 50%, hsl(250, 60%, 40%) 100%);
+    --gradient-passion: linear-gradient(45deg, hsl(350, 100%, 60%) 0%, hsl(320, 100%, 65%) 100%);
+    --gradient-mystical: linear-gradient(180deg, hsl(250, 60%, 40%) 0%, hsl(280, 80%, 30%) 100%);
+    
+    /* Glowing effects */
+    --glow-romantic: 0 0 30px hsl(320, 100%, 65% / 0.4);
+    --glow-passion: 0 0 40px hsl(350, 100%, 60% / 0.3);
+    --glow-mystical: 0 0 50px hsl(280, 80%, 50% / 0.2);
+    
+    /* Animation properties */
+    --animation-sparkle: sparkle 2s ease-in-out infinite;
+    --animation-float: float 3s ease-in-out infinite;
+    --animation-glow-pulse: glow-pulse 2s ease-in-out infinite alternate;
 
     --radius: 0.5rem;
 
@@ -101,5 +116,48 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-mystical);
+    min-height: 100vh;
+  }
+}
+
+/* Custom animations */
+@keyframes sparkle {
+  0%, 100% { 
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px);
+  }
+  50% { 
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow-pulse {
+  0% { 
+    box-shadow: var(--glow-romantic);
+  }
+  100% { 
+    box-shadow: var(--glow-passion);
+  }
+}
+
+@keyframes result-reveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }
